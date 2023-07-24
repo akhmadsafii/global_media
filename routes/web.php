@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DiagramController;
 use App\Http\Controllers\NumberController;
 use App\Http\Controllers\PalindromController;
 use App\Http\Controllers\PostController;
@@ -20,6 +21,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('diagrams')->name('diagram.')->group(function () {
+    Route::get('/', [DiagramController::class, 'index'])->name('index');
+    // Route::post('check', [PalindromController::class, 'checkPalindrome'])->name('check');
 });
 
 Route::prefix('palindroms')->name('palindrom.')->group(function () {
